@@ -1,0 +1,381 @@
+/* ===================================================================================
+   🐓 CHICKEN ROAD - 10000000000% EXACT DYNAMIC VECTOR CASINO CRASH STYLESHEET
+   =================================================================================== */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0c0806;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* 🔒 [মেগা কিলার হেডার BLOKER]: লবির মেইন হেডারের সাথে ডাবল বক্স জ্যাম ওয়ান-শটে সাফ! */
+.header {
+    display: none !important;
+}
+
+/* 🏟️ ক্যাসিনো মেইন এরিনা - সুপ্রীম হালকা খয়েরী লাক্সারি কফি চাদর সিঙ্ক */
+body {
+    background: radial-gradient(circle at center, #422d22 0%, #1f140f 60%, #0c0806 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    position: relative;
+}
+
+/* 🏟️ মেইন গেম এরিনা কন্টেইনার কাঠামো (১০০% স্ক্রিনশট সাইজ লকিং) */
+.game-stadium-canvas {
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #17110d;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 👑 ওপরের অফিশিয়াল স্ট্যাটাস ডিসপ্লে বার (স্ক্রিনশটের অবিকল ক্লোন) */
+.top-status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(180deg, #1c1410 0%, #0d0806 100%);
+    border-bottom: 2px solid #291d16;
+    z-index: 10;
+}
+
+.game-title {
+    font-size: 16px;
+    font-weight: 950;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.title-accent {
+    color: #ff3333; /* ROAD টেক্সট লাল আগুন কালার */
+}
+
+.help-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #ffaa00;
+    border-radius: 50%;
+    font-size: 11px;
+    color: #ffaa00;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.live-win-counter {
+    background: #0d1b3e; /* স্ক্রিনশটের অবিকল নেভি ব্লু ব্যালেন্স বক্স */
+    border: 1.5px solid #1e356e;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #ffffff;
+    font-family: monospace;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+.menu-burger {
+    color: #8fa0c4;
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 🛣️ ডাইনামিক হাইওয়ে এরিনা (১০০% ইমেজ-মুক্ত ফিক্সড ক্যানভাস) */
+.highway-arena {
+    flex: 1;
+    background: #3a3532; /* পিচ ঢালা পাকা রাস্তা */
+    border-left: 12px solid #5a5450; /* রাস্তার ধারের ফুটপাত বর্ডার */
+    border-right: 12px solid #5a5450;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column-reverse; /* নিচ থেকে ওপরে লেন সাজানো */
+    padding-bottom: 80px; /* মুরগির হোম ফুটপাত স্পেস */
+}
+
+/* ৫টি রাস্তার সারি বা লেন */
+.road-lane {
+    height: 56px;
+    width: 100%;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.25); /* রাস্তার সাদা ড্যাশড ডিভাইডার */
+    position: relative;
+    box-sizing: border-box;
+    overflow: visible;
+}
+.road-lane:last-child {
+    border-bottom: none;
+}
+
+/* 🎯 মাঝখানের ম্যানহোল কভার ওOdds নিয়ন কাউন্টার */
+.manhole-odds-cover {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110px;
+    height: 110px;
+    background: radial-gradient(circle, #2b2624 0%, #141110 100%); /* লোহার ম্যানহোল কভার */
+    border: 4px solid #423b38;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.7), inset 0 0 12px rgba(0,0,0,0.9);
+    z-index: 4;
+    transition: all 0.3s ease;
+}
+
+/* বাজি ধরলে ম্যানহোল কভার চারধারে নিওন ফ্লাশ কাঁপবে */
+.manhole-odds-cover.pulse-glow-active {
+    border-color: #ffaa00;
+    box-shadow: 0 0 25px rgba(255,170,0,0.6), inset 0 0 15px rgba(255,170,0,0.4);
+}
+
+.odds-val {
+    font-size: 22px;
+    font-weight: 950;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 🐓 [হাইলি অ্যানিমেটেড এসভিজি চিকেন ভেক্টর বর্ম LOCK] */
+.animated-chicken-vector {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    bottom: 20px;
+    left: 40px;
+    z-index: 5;
+    transition: bottom 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.2), left 0.22s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+    
+    /* ৪K জিপিইউ মেমোরি কিলার ড্রাইভার */
+    -webkit-transform-style: preserve-3d !important;
+    transform: translateZ(0) !important;
+    will-change: bottom, left !important;
+}
+
+.chicken-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* মুরগি যখন একটিভ থাকবে তখন পা ও ডানা সুপ্রীম ভাইবে কাঁপবে */
+.animated-chicken-vector.active-hop .chicken-svg {
+    animation: chickenIdleDance 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes chickenIdleDance {
+    0% { transform: scale(1.0) translateY(0); }
+    100% { transform: scale(1.05) translateY(-3px); }
+}
+
+/* 💥 মুরগি ক্র্যাশ খেয়ে মারা গেলে রক্তিম ব্লাস্ট এнимаেশন */
+.animated-chicken-vector.chicken-splat-dead {
+    transform: scale(1.3) rotate(90deg) !important;
+    filter: grayscale(0.4) sepia(1) hue-rotate(-50deg) saturate(5) brightness(0.8) !important;
+    opacity: 0.85;
+    animation: splatShake 0.1s linear infinite;
+}
+
+@keyframes splatShake {
+    0% { translate: (1px, 1px); }
+    50% { translate: (-1px, -1px); }
+    100% { translate: (1px, -1px); }
+}
+
+/* 🚗 ডাইনামিক গাড়ি ও ট্রাক ভেসেল কন্টেইনার */
+.dynamic-vehicle-vessel {
+    position: absolute;
+    top: 5px;
+    width: 85px;
+    height: 42px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* ৪K নো-ব্লর জিপিইউ বুস্টার ইনজেকশন */
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+    -webkit-transform-style: preserve-3d !important;
+    transform: translateZ(0) !important;
+}
+
+.vehicle-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.4));
+}
+
+/* ➡️ গাড়ি ডানে ছুটে চলার এнимаেশন টাইম লুপ */
+@keyframes driveRightAnim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(650px); }
+}
+
+/* ⬅️ গাড়ি বামে ছুটে চলার এнимаেশন টাইম লুপ */
+@keyframes driveLeftAnim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-650px); }
+}
+
+/* 🎛️ নিচের মেইন বেটিং কন্ট্রোল ফুটার বার (১০০% স্ক্রিনশট ক্লোন) */
+.bottom-bet-dashboard {
+    background: #17120f;
+    border-top: 3px solid #261c16;
+    padding: 14px 18px 40px 18px;
+    z-index: 10;
+    box-shadow: 0 -8px 25px rgba(0,0,0,0.8);
+}
+
+.bet-id-row {
+    font-size: 11px;
+    color: #7a6a60;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.arrow-down {
+    font-size: 8px;
+    margin-left: 2px;
+}
+
+/* ১.০০৳ স্টেক নব ইনপুট প্যানেল */
+.stake-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0d0907;
+    border: 1.5px solid #2b1f18;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin-bottom: 12px;
+}
+
+.adjust-btn {
+    background: transparent;
+    border: none;
+    color: #5c4a3f;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stake-value-box {
+    font-size: 15px;
+    font-weight: 900;
+    color: #ffffff;
+    font-family: monospace;
+}
+
+.currency-sign {
+    color: #7a6a60;
+    font-size: 13px;
+    margin-left: 1px;
+}
+
+.multiplier-btn {
+    background: #1e1511;
+    border: 1px solid #36251d;
+    color: #a89487;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.multiplier-btn:active {
+    background: #2d1f19;
+}
+
+.coin-stack-icon {
+    font-size: 15px;
+    margin-left: 2px;
+}
+
+/* রিস্ক লেভেল ড্রপডাউন সিলেক্টর (Easy, Medium, Hard) */
+.risk-dropdown-holder select {
+    width: 100%;
+    background: #0d0907;
+    border: 1.5px solid #2b1f18;
+    border-radius: 8px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 900;
+    outline: none;
+    margin-bottom: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='7a6a60' height='24' viewBox='0 0 24 24' width='24' xmlns='http://w3.org'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* মেইন গ্রীন অ্যাকশন বাটন চ্যাম (Play / Jump / Cashout মোড ড্রাইভার) */
+.action-green-btn {
+    width: 100%;
+    background: #1cb55c; /* অফিশিয়াল ইজি গ্রীন কালার ফ্লাশ */
+    border: none;
+    border-bottom: 4px solid #127a3d;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 950;
+    color: #ffffff;
+    cursor: pointer;
+    text-shadow: 0 1.5px 3px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 10px rgba(28,181,92,0.3);
+    transition: all 0.1s ease;
+}
+.action-green-btn:active {
+    transform: translateY(2px);
+    border-bottom-width: 2px;
+}
+
+/* 🔵 লেনে লাফ দেওয়ার ব্লু মোড */
+.action-green-btn.jump-mode-blue {
+    background: #0077ff !important;
+    border-bottom-color: #0044bb !important;
+    box-shadow: 0 4px 12px rgba(0,119,255,0.4) !important;
+}
+
+/* 🟡 প্রফিট ক্যাশ আউট করার গোল্ডেন মেগা মোড */
+.action-green-btn.cashout-mode-gold {
+    background: linear-gradient(180deg, #ffaa00 0%, #cc7700 100%) !important;
+    border-bottom: 4px solid #994400 !important;
+    box-shadow: 0 4px 15px rgba(255,170,0,0.5) !important;
+    animation: goldPulseBtn 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes goldPulseBtn {
+    0% { filter: brightness(1.0); }
+    100% { filter: brightness(1.15); box-shadow: 0 0 15px #ffaa00; }
+}
