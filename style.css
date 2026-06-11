@@ -228,16 +228,16 @@ body {
     display: none !important; 
 }
 
-/* 🐓 [🔒 হাইলি অ্যানিমেটেড পিএনজি মুরগি লকিং ক্যানভাস 🔒] */
+/* 🐓 [🔒 হাইলি অ্যানিমেটেড পিএনজি মুরগি - মেগা কিংস দানবীয় সাইজ লক 🔒] */
 .animated-chicken-vector {
     position: absolute;
-    width: 48px;
-    height: 48px;
-    left: 25px; 
-    top: 42%;
+    width: 82px;  /* 👈 ওস্তাদ! লেনের পুরো চওড়া সাইজ (82px) কভার করে মুরগী এখন ডাবল বড় জলজল করবে! */
+    height: 82px; /* 👈 হাইটও ৮২px করে দেওয়া হলো, যাতে স্ক্রিনে একদম দানবীয় লাক্সারি লুক ফুটে ওঠে ভাই ভাই */
+    left: 10px;   /* বড় সাইজের কারণে পজিশন মিলিমিটার এডজাস্ট করা হলো */
+    top: 36%;     /* খাড়া রাস্তার মাঝখানে পারফেক্ট এলাইনমেন্ট লক */
     z-index: 5;
     transition: left 0.18s cubic-bezier(0.25, 1, 0.5, 1), top 0.18s ease;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
     
     /* ৪K জিপিইউ হার্ডওয়্যার এক্সিলারেটর */
     -webkit-transform-style: preserve-3d !important;
@@ -245,27 +245,30 @@ body {
     will-change: left, top !important;
 }
 
+/* 🐓 মুরগী যখন একটিভ থাকবে তখন সে চওড়া ফ্রেমে ৩D বাউন্স খাবে */
 .animated-chicken-vector.active-hop {
     animation: chickenPremiumHop 0.25s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
 }
 
 @keyframes chickenPremiumHop {
     0% { transform: translateZ(0) scale(1.0) translateY(0); }
-    100% { transform: translateZ(0) scale(1.08) translateY(-4px); }
+    100% { transform: translateZ(0) scale(1.06) translateY(-8px); } /* বড় মুরগীর ওরিজিনাল লাফানোর হাইট বুস্ট */
 }
 
+/* 💥 মুরগী ক্র্যাশ খেয়ে মারা গেলে চ্যাপ্টা হয়ে কাঁপতে থাকার প্রিমিয়াম মেকানিজম */
 .animated-chicken-vector.chicken-splat-dead {
-    transform: scale(1.3) rotate(180deg) !important;
-    filter: grayscale(0.4) sepia(1) hue-rotate(-50deg) saturate(5) brightness(0.8) !important;
-    opacity: 0.85;
-    animation: splatShake 0.1s linear infinite;
+    transform: scale(1.1) rotate(180deg) !important;
+    filter: grayscale(0.2) sepia(1) hue-rotate(-50deg) saturate(5) brightness(0.9) drop-shadow(0 0 15px #ff0000) !important;
+    opacity: 0.9;
+    animation: premiumSplatShake 0.08s linear infinite;
 }
 
-@keyframes splatShake {
-    0% { transform: translate(1px, 1px); }
-    50% { transform: translate(-1px, -1px); }
-    100% { transform: translate(1px, -1px); }
+@keyframes premiumSplatShake {
+    0% { transform: translate(1.5px, 1.5px) rotate(180deg); }
+    50% { transform: translate(-1.5px, -1.5px) rotate(180deg); }
+    100% { transform: translate(1.5px, -1.5px) rotate(180deg); }
 }
+
 
 /* 🚗 ডাইনামিক ভার্টিকাল ট্রাফিক ভেসেল কন্টেইনার */
 .dynamic-vehicle-vessel {
