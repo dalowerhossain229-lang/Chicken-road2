@@ -311,12 +311,18 @@
                             return;
                         }
                         
-                        currentLanePosition = data.currentLane;
+                                               currentLanePosition = data.currentLane;
                         let chicken = document.getElementById("chicken-hero");
                         
-                        let targetLeftPixels = 100 + 41 + (currentLanePosition * 82); 
+                        // 🚀 [🔒 ওস্তাদ! বর্ডার লাইন ট্র্যাপ চূর্ণ করে রাস্তার একদম মাঝখানে মুরগী বসানোর সুপ্রীম ম্যাথ লকিং 🔒]:
+                        // ১০০px শুরুর ফুটপাত এরিয়া + (লেন ইনডেক্স x ৮২px লেনের চওড়া)। বড় দানবীয় মুরগীটিকে রাস্তার একদম কাঁটায় কাঁটায় মাঝখানে এবং গোল ওডসের ঠিক নিচে সেট করার এয়ার-টাইট ক্যালকুলেটর!
+                        let targetLeftPixels = 100 + (currentLanePosition * 82); 
                         chicken.style.left = `${targetLeftPixels}px`;
-                        chicken.style.top = `${40 + (Math.sin(currentLanePosition) * 5)}%`; 
+                        
+                        // বড় মুরগীটার মাথা যাতে ওডস টেক্সটকে ঢেকে না ফেলে—তার জন্য গোল ওডস বক্সের ঠিক নিচে পারফেক্ট ৫২% ডাইনামিক হাইট লক ভাই ভাই!
+                        chicken.style.top = "52%"; 
+                        chicken.style.transform = "translateX(0)"; // ওল্ড অফসেট জ্যাম চিরতরে সাফ
+ 
                         
                         resetAllManholeGlows();
                         let activeManhole = document.getElementById(`odds-${currentLanePosition}`);
