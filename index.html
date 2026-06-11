@@ -184,33 +184,38 @@
             playAudio('click');
         }
 
+                // 🚗 [🔒 ওস্তাদ! ২৪-ঘণ্টা অবিরাম ওপর থেকে নিচে গাড়ি নামানোর ওরিじんাল ট্রাফিক ইঞ্জিন লক 🔒]
         function startHighVelocityTrafficSpawnerEngine() {
             clearActiveTrafficEngine();
             let lanes = document.querySelectorAll(".road-lane");
             
             lanes.forEach((lane, index) => {
-                let spawnSpeed = Math.random() * (1100 - 550) + 550; 
+                // প্রতিটা পাকা রাস্তার জন্য আলাদা আলাদা ডাইনামিক স্পিড ও টাইমিং, যাতে সব গাড়ি একসাথে না নেমে আগে-পিছে ফাঁকা জায়গা তৈরি করে নামতে পারে!
+                let spawnSpeed = Math.random() * (1000 - 450) + 450; 
                 
                 let intervalIdx = setInterval(() => {
                     if (gameStateStatus === "GAMEOVER") return;
                     
                     let vehicleNode = document.createElement("div");
                     vehicleNode.className = "dynamic-vehicle-vessel";
+                    
+                    // লাল ও নীল পিএনজি গাড়ির র‍্যান্ডম সিলেকশন
                     let chosenCarImage = pngVehiclesLibrary[Math.floor(Math.random() * pngVehiclesLibrary.length)];
+                    vehicleNode.innerHTML = `<img src="${chosenCarImage}" class="car-png-node" alt="🚘" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:32px; height:60px; background:%23ff3333; border-radius:6px; box-shadow:0 0 12px %23f00;\'/>';">`;
                     
-                    vehicleNode.innerHTML = `<img src="${chosenCarImage}" class="car-png-node" alt="🚘" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:30px; height:50px; background:%23ff3333; border-radius:4px; box-shadow:0 0 10px %23f00;\'/>';">`;
+                    // 🚨 [মহা কিংস লজিক লক]: নিচ থেকে ওপরে যাওয়ার ওল্ড ট্র্যাপ চিরতরে ভ্যানিশ!
+                    // এখন Easy, Medium, Hard সব লেনের সব গাড়ি সবসময় স্ক্রিনের এক্কেবারে ওপর থেকে (-130px) ধামাধাম স্পিডে সোজা নিচের দিকেই নামবে ওস্তাদ!
+                    vehicleNode.style.top = "-130px";
                     
-                    if (index % 2 === 0) {
-                        vehicleNode.style.top = "-120px";
-                        vehicleNode.style.animation = `driveDownAnim ${Math.random() * (2.2 - 1.1) + 1.1}s linear forwards`;
-                    } else {
-                        vehicleNode.style.top = "500px";
-                        vehicleNode.style.animation = `driveUpAnim ${Math.random() * (2.2 - 1.1) + 1.1}s linear forwards`;
-                    }
+                    // প্রতিটা রোডের ট্রাফিক স্পিড আলাদা এডজাস্ট করা হলো যাতে প্লেয়ার দেখে দেখে ফাঁকা ট্র্যাক বেছে নিতে পারে
+                    let driveDuration = Math.random() * (2.0 - 0.9) + 0.9; 
+                    vehicleNode.style.animation = `driveDownAnim ${driveDuration}s linear forwards`;
                     
                     lane.appendChild(vehicleNode);
-                    setTimeout(() => { vehicleNode.remove(); }, 2500); 
-                }, spawnSpeed + (index * 150));
+                    
+                    // স্ক্রিন পার হয়ে নিচে চলে গেলে গাড়ি মেমোরি থেকে ওটো ডিলিট সাফ
+                    setTimeout(() => { vehicleNode.remove(); }, 2200); 
+                }, spawnSpeed + (index * 120)); // লেন ইনডেক্স মিলিয়ে ট্রাফিকের কিলার চেইন ও ফাঁকা গ্যাপ তৈরি!
                 
                 vehicleSpawnIntervalsList.push(intervalIdx);
             });
@@ -225,6 +230,7 @@
         function resetAllManholeGlows() {
             document.querySelectorAll(".lane-manhole-node").forEach(m => m.className = "lane-manhole-node");
         }
+
 
         // 🎮 [🐓 গ্র্যান্ড চিকেন রোড কোর গেমপ্লে মাস্টার কন্ট্রোলার 🐓]
         async function executeChickenStepJumpSequence() {
