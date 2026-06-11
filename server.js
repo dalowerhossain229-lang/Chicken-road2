@@ -161,11 +161,11 @@ app.post('/api/chicken-jump', async (req, res) => {
     let activeLadder = chickenRoadMultiRiskLadders[activeSession.risk];
 
     // 💥 [🔒 ক্র্যাশ ও কন্ডিশন কোলাইড চেক 🔒]
+        // 💥 [🔒 ওস্তাদ! ব্যাকএন্ড সেশন মেমোরি ট্র্যাপ ওয়ান-শটে চিরতরে চূর্ণ করার কিংস বর্ম 🔒]
     if (totalConfig[targetIndex] === 1) {
         activeSession.isGameOver = true;
         
         try {
-            // হেরে গেলে মেইন সাইটের ওয়ালেটে ০ টাকা রিটার্ন হিট করার সেফটি পলিসি
             const response = await axios.post(`${MAIN_SITE_URL}/api_callback.php`, {
                 action: "win",
                 username: finalQueryUser,
@@ -177,7 +177,6 @@ app.post('/api/chicken-jump', async (req, res) => {
             let finalBal = (response.data && response.data.balance !== undefined) ? response.data.balance : 0;
             delete chickenRoadActiveSessionsMap[finalQueryUser]; 
 
-            // সকেট এমিট দিয়ে হেরে যাওয়ার পরও ব্যালেন্স সিঙ্ক প্রটেকশন লক ওস্তাদ ভাই ভাই
             io.emit("balanceUpdate", { username: finalQueryUser, balance: finalBal });
 
             return res.json({
@@ -186,6 +185,7 @@ app.post('/api/chicken-jump', async (req, res) => {
                 balance: finalBal,
                 message: "💥 SPLAT! Chicken collided with a speeding vehicle!"
             });
+
         } catch (e) {
             delete chickenRoadActiveSessionsMap[finalQueryUser];
             return res.json({ success: true, status: "CRASH", balance: 0 });
