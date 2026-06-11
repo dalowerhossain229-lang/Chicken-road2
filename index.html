@@ -226,7 +226,7 @@
             document.querySelectorAll(".lane-manhole-node").forEach(m => m.className = "lane-manhole-node");
         }
 
-        async function executeChickenStepJumpSequence() {
+       async function executeChickenStepJumpSequence() {
             let playBtn = document.getElementById("play-action-btn");
             let cashBtn = document.getElementById("cashout-action-btn");
 
@@ -246,7 +246,11 @@
                         currentLanePosition = -1;
                         
                         let chickenImg = document.getElementById("chicken-img-core");
-                        chickenImg.src = "chicken_walk.png"; 
+                        chickenImg.src = "chicken_walk.png"; // মুরগির তাজা জ্যান্ত ছবি রিসেট সচল ওস্তাদ!
+                        chickenImg.style.display = 'block';
+                        if(document.getElementById('chicken-fallback-svg')) {
+                            document.getElementById('chicken-fallback-svg').style.display = 'none';
+                        }
                         
                         let chicken = document.getElementById("chicken-hero");
                         chicken.style.left = "25px"; 
@@ -284,10 +288,16 @@
                             gameStateStatus = "GAMEOVER"; 
                             playAudio('stop');
                             
-                            document.getElementById("chicken-img-core").src = "chicken_dead.png";
+                            // 💥 মরা ছবি লোড এবং ক্র্যাশ অ্যানিমেশন ট্রিগার
+                            let chickenImg = document.getElementById("chicken-img-core");
+                            chickenImg.src = "chicken_dead.png";
                             document.getElementById("chicken-hero").className = "animated-chicken-vector chicken-splat-dead";
                             
-                            setTimeout(() => { alert("💥 SPLAT! মুরগিটি উপর থেকে আসা দ্রুতগামী গাড়ির নিচে পিষ্ট হয়েছে ওস্তাদ!"); resetChickenRoadStadiumToIdle(); }, 600);
+                            // 🚨 [🔒 ওস্তাদ! জ্যামিং অ্যালার্ট পপ-আপ চিরতরে উপড়ে ফেলে ওটো-রিসেট ইঞ্জিন লক 🔒]:
+                            // কোনো পপ-আপের প্যারা ছাড়াই মুরগি মরার ঠিক ১.৫ সেকেন্ডের মাথায় এরিনা ও বাটন ওটো-মেটিক্যালি ক্লিন রিসেট হয়ে পরের রাউন্ড স্টার্ট করবে!
+                            setTimeout(() => {
+                                resetChickenRoadStadiumToIdle();
+                            }, 1500); 
                             return;
                         }
                         
@@ -315,8 +325,8 @@
                         if (data.status === "JACKPOT") {
                             gameStateStatus = "GAMEOVER"; 
                             playAudio('bigwin');
-                            alert(`🏆 মেগা জ্যাকপট সাকসেস! মুরগিটি সম্পূর্ণ রাস্তা নিরাপদে পার হয়েছে! আপনি জিতেছেন Tk${data.winAmount}`);
-                            resetChickenRoadStadiumToIdle(); 
+                            // জ্যাকপটের ক্ষেত্রেও ওটো-রিসেট পলিসি গেঁথে দেওয়া হলো ওস্তাদ ভাই ভাই
+                            setTimeout(() => { resetChickenRoadStadiumToIdle(); }, 2000);
                             return;
                         }
 
@@ -328,7 +338,12 @@
                 } catch (e) {}
                 playBtn.disabled = false;
             }
-        }
+        } 
+
+            
+                        
+
+                        
 
         async function executeChickenCashOutSequence() {
             let cashBtn = document.getElementById("cashout-action-btn");
@@ -343,7 +358,6 @@
                 const data = await res.json();
                 if (data.success) {
                     gameStateStatus = "GAMEOVER"; 
-                    alert(`🎉 ক্যাশ আউট সফল ওস্তাদ! আপনি নিরাপদে Tk${data.winAmount} তুলে নিয়েছেন!`);
                     resetChickenRoadStadiumToIdle();
                 }
             } catch (e) {}
@@ -362,12 +376,21 @@
             document.getElementById("risk-level-select").disabled = false;
             resetAllManholeGlows();
             
+            // 🐓 মরা চ্যাপ্টা মুরগি ধুয়ে সাফ করে আবার নতুন তাজা ওয়াকিং পিএনজি মুরগি জ্যান্ত প্লেসমেন্ট লক!
+            let chickenImg = document.getElementById("chicken-img-core");
+            chickenImg.src = "chicken_walk.png";
+            chickenImg.style.display = 'block';
+            if(document.getElementById('chicken-fallback-svg')) {
+                document.getElementById('chicken-fallback-svg').style.display = 'none';
+            }
+            
             let chicken = document.getElementById("chicken-hero");
             chicken.style.left = "25px"; 
             chicken.style.top = "42%";
             chicken.className = "animated-chicken-vector";
             
             document.getElementById("highway-map").scrollLeft = 0; 
+            gameStateStatus = "IDLE"; // স্টেট পুরোপুরি আইডল মোডে রিসেট লক!
             fetchLivePlatformBalanceSync();
             generateDynamicRiskLanesUI(); 
         }
