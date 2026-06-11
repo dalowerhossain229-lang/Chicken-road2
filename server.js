@@ -254,7 +254,7 @@ app.post('/api/chicken-cashout', async (req, res) => {
             message: `🎉 Success! You cashed out Tk${finalCalculatedWin.toFixed(2)} safely!`
         });
     });
-});
+
 
 app.get('/', (req, res) => { res.sendFile(path.resolve(__dirname, 'index.html')); });
 io.on('connection', (socket) => {});
