@@ -289,14 +289,16 @@
             chickenGroup.style.left = offset + "px";
 
             let selectedRisk = document.getElementById("risk-level-select").value;
-            let crashProbability = 0.18; 
-            if (selectedRisk === "Easy") crashProbability = 0.08;
-            if (selectedRisk === "Medium") crashProbability = 0.13;
-            if (selectedRisk === "Hardcore") crashProbability = 0.28;
+            
+            // 🎯 [🔒 ওস্তাদ! ৪টা আলাদা মোডের জন্য ৪টি কাটকাট কাস্টম ক্র্যাশ প্রোবাবিলিটি বর্ম ১০০% খাঁটি লক 🔒]
+            let crashProbability = 0.20; // 👈 Hard মোডের জন্য কাঁটায় কাঁটায় ২০% ক্র্যাশ রেট ফিক্সড!
+            if (selectedRisk === "Easy") crashProbability = 0.08;      // Easy মোডে ৮% ক্র্যাশ রেট
+            if (selectedRisk === "Medium") crashProbability = 0.13;    // Medium মোডে ১৩% ক্র্যাশ রেট
+            if (selectedRisk === "Hardcore") crashProbability = 0.28;  // Hardcore মোডে ২৮% ক্র্যাশ রেট
 
             let isSafe = Math.random() > crashProbability;
 
-            // 🚀 [🔒 অটো-ক্যামেরা ডাইনামিক ভিউপোর্ট ম্যাপ কন্টেইনার স্ক্রোল লুপ 🔒]: মুরগি দেখে দেখে হুবху ম্যাপ স্ক্রোল হবে!
+            // 🚀 [🔒 অটো-ক্যামেরা ডাইনামিক ভিউপোর্ট ম্যাপ কন্টেইনার স্ক্রোল লুপ 🔒]
             let mapContainer = document.getElementById("viewport");
             if (mapContainer && offset > (mapContainer.clientWidth / 2)) {
                 mapContainer.scrollTo({
@@ -309,6 +311,7 @@
                 spawnCar(currentStep, isSafe);
             }, 300);
         }
+        
 
 
         // 🚗 [🔒 ওস্তাদ! আপনার পুরনো ফাইলের ওরিজিনাল ২০ মিলি-সেকেন্ড জাভাস্ক্রিপ্ট পিক্সেল লুপ কার মোশন লক 🔒]
