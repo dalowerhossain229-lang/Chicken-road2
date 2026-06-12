@@ -190,33 +190,40 @@ body {
     flex-shrink: 0;
 }
 
-/* 🎯 [২. অন্য গেমের অবিকল মাঝখানের গোল ওOdds কাউন্টার ম্যানহোল] */
+/* 🎯 [🔒 ওস্তাদ! ওOdds ঘর বা ম্যানহোল যাতে নিখুঁত গোল থেকে পাকা রাস্তার দুপাশের কিনারা ১০০% ছুঁয়ে বসে তার সুপ্রীম কিংস লক 🔒] */
 .manhole, .lane-manhole-node { 
-    width: 52px; 
-    height: 52px; 
-    border-radius: 50%; 
-    background: radial-gradient(circle, #2a2a2a 30%, #161616 100%); 
-    border: 2px solid #333; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-size: 10px; 
-    font-weight: bold; 
-    color: #888; 
+    width: 68px !important;  /* 👈 ওস্তাদ! রাস্তার উইডথ ৭০ পিক্সেল, তাই ৬৮ পিক্সেল উইডথ দেওয়া হলো যাতে দুপাশের কিনারা বা দাগ একদম ছুঁয়ে ছুঁয়ে থাকে ভাই ভাই! */
+    height: 68px !important; /* 👈 ওস্তাদ! উইডথ আর হাইট একদম সমান (৬৮x৬৮) রাখার কারণে ঘরটি লম্বাটে না হয়ে এক্কেবারে নিখুঁত গোল (Perfect Circle) থাকবে ভাই ভাই! */
+    max-width: 68px !important;
+    max-height: 68px !important;
+    border-radius: 50% !important; /* 👈 ওস্তাদ! এক্কেবারে একুরেট ৩D চাঁদের মতো নিখুঁত গোল গোল ক্যাসিনো ঘর লক! */
+    background: radial-gradient(circle, #252525 30%, #111111 100%) !important; 
+    border: 2px solid #2d4a34 !important; /* পাকা রাস্তার ডার্ক গ্রিনের সাথে মিলিমিটার ম্যাচিং রেসিং বর্ডার */
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important; 
+    font-size: 13px !important; /* টেক্সট সাইজ একদম পারফেক্ট ও স্পষ্ট জলজল করার জন্য ফিক্সড ভাই ভাই */
+    font-weight: 950 !important; 
+    color: #8fa0c4 !important; 
     font-family: monospace;
-    box-shadow: inset 0 0 8px #000, 0 4px 6px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 12px #000, 0 6px 10px rgba(0,0,0,0.6) !important;
     transition: all 0.2s ease;
     z-index: 4;
+    position: absolute !important; /* লেনের মাঝখানে টাইট লক করার বর্ম */
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* লেনের ঠিক মাঝখানে নিখুঁত গোল হয়ে বসার কিংস পজিশন */
+    margin: 0 !important;
 }
 
+/* বাজি ধরে মুরগি লেনে পা রাখলে ঘরটি গোল্ডেন ৩D রেসিং গ্লো ছড়াবে ওস্তাদ! */
 .manhole.active-glow, .lane-manhole-node.active-glow {
-    border-color: #ffaa00;
+    border-color: #ffaa00 !important;
     color: #ffffff !important;
-    font-size: 12px !important;
-    font-weight: 950 !important;
-    background: radial-gradient(circle, #221500 0%, #ff9100 100%);
-    box-shadow: 0 0 15px #ffaa00, inset 0 0 4px #fff;
-    transform: scale(1.1);
+    font-size: 15px !important;
+    background: radial-gradient(circle, #3a2200 0%, #ff9100 100%) !important;
+    box-shadow: 0 0 25px #ffaa00, inset 0 0 6px #fff !important;
+    transform: translate(-50%, -50%) scale(1.05) !important; /* নিখুঁত গোল অবস্থান অক্ষত রেখে সামান্য পালস গ্লো ছড়াবে ভাই ভাই */
 }
 
 /* 🐓 [🔒 ওস্তাদ! আপনার পুরনো ফাইলের অবিকল তাজা চিকেন গ্রুপ পজিশনিং বর্ম লকিং 🔒] */
