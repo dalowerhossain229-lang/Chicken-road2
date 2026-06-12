@@ -106,30 +106,36 @@
         const cashVal = document.getElementById("cash-val");
         const betValDisplay = document.getElementById("bet-val");
 
-                // 🚀 [ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ডাইনামিক করার ও শেষ মাথা পর্যন্ত স্ক্রোল সচল করার কিংস ফর্মুলা]
+                // 🚀 [🔒 ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ১০০% ডাইনামিক করার মেগা কিংস লক 🔒]
         function initWorld() {
             let selectedRisk = document.getElementById("risk-level-select").value;
             let activeLadder = chickenRoadMultiRiskLadders[selectedRisk];
             let wrapper = document.getElementById("dynamic-lanes-wrapper");
             
-            wrapper.innerHTML = ""; 
-            activeLadder.forEach((odds, index) => {
-                let laneNode = document.createElement("div");
-                laneNode.className = "road-lane column";
-                laneNode.setAttribute("data-lane", index);
-                laneNode.innerHTML = `<div class="lane-manhole-node manhole" id="odds-${index}">${odds}</div>`;
-                wrapper.appendChild(laneNode);
-            });
+            if (wrapper) {
+                wrapper.innerHTML = ""; 
+                wrapper.style.display = "flex";
+                wrapper.style.flexDirection = "row";
+                wrapper.style.flexWrap = "nowrap";
+                
+                activeLadder.forEach((odds, index) => {
+                    let laneNode = document.createElement("div");
+                    laneNode.className = "road-lane column";
+                    laneNode.setAttribute("data-lane", index);
+                    laneNode.innerHTML = `<div class="lane-manhole-node manhole" id="odds-${index}">${odds}</div>`;
+                    wrapper.appendChild(laneNode);
+                });
+            }
 
-            // 🎯 ওস্তাদ! লেনের সংখ্যা (Easy: ৩০, Medium: ২৫, Hard: ২০, Hardcore: ১৫) অনুযায়ী মেইন গেম-ওয়ার্ল্ডের টোটাল উইডথ ডাইনামিক ফিক্সড!
-            let totalLanesWidth = (activeLadder.length * 70) + 220; // লেনের সংখ্যা × ৭০ পিক্সেল + START ও GOAL জোনের সাইজ সিঙ্ক
+            // 🎯 ওস্তাদ! ৪টা মোডের সাইজ লেনের ৭০ পিক্সেল উইডথ আর নিরাপদ জোনের সাইজ মিলিয়ে ডাইনামিক ক্যানভাস লক!
+            let totalLanesWidth = (activeLadder.length * 70) + 220; 
             const worldNode = document.getElementById("game-world");
             if (worldNode) {
                 worldNode.style.width = totalLanesWidth + "px"; 
-                worldNode.style.transform = `translateX(0px)`; // মোড চেঞ্জ করলে ক্যামেরা আবার শুরুতে চলে আসবে ভাই ভাই
+                worldNode.style.transform = `translateX(0px)`; // মোড চেঞ্জ করলে ক্যামেরা শুরুতে ব্যাক করবে ভাই ভাই
             }
 
-            // হাইওয়ে এরিনা ভিউপোর্টে হাত দিয়ে ডান থেকে বামে স্ক্রল করার ডম মেমোরি আনলক
+            // হাইওয়ে এরিনা ভিউপোর্টে হাত দিয়ে ডান থেকে বামে স্ক্রল করার ওটো-রিলিজ লক ফিক্সড!
             let mapContainer = document.getElementById("viewport");
             if (mapContainer) {
                 mapContainer.scrollLeft = 0; 
@@ -137,6 +143,7 @@
                 mapContainer.style.webkitOverflowScrolling = "touch";
             }
         }
+        
 
         function handleRiskLevelChange() {
             playAudio('click');
