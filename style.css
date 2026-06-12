@@ -226,10 +226,10 @@ body {
     transform: translate(-50%, -50%) scale(1.05) !important; /* নিখুঁত গোল অবস্থান অক্ষত রেখে সামান্য পালস গ্লো ছড়াবে ভাই ভাই */
 }
 
-/* 🐓 [🔒 ওস্তাদ! মুরগির মেইন কন্টেইনার ক্যানভাস রাজকীয় বড় সাইজে ১ মিলিমিটার একুরেট সিঙ্ক লক 🔒] */
+/* 🐓 [🔒 ওস্তাদ! মুরগির মেইন কন্টেইনার ক্যানভাস গোল ওOdds ঘরের একদম মাঝ বরাবর দিয়ে ১ মিলিমিটার একুরেট ছোটানোর কিংস বর্ম লক 🔒] */
 #chicken-group, .animated-chicken-vector { 
     position: absolute !important; 
-    width: 70px !important; /* লেনের মোট উইডথ ৭০ পিক্সেল পুরোটা জুড়ে বডি কভার লক ভাই ভাই */
+    width: 70px !important; /* লেনের মোট চওড়া উইডথ ৭০ পিক্সেল পুরোটা জুড়ে বডি কাভার লক ভাই ভাই */
     height: 70px !important; 
     z-index: 10 !important; 
     display: flex !important; 
@@ -237,11 +237,13 @@ body {
     align-items: center !important; 
     pointer-events: none !important; 
     left: 0px;
-    top: 42% !important;
-    transform: none !important;
+    /* 🎯 ওস্তাদ! গোল ঘরের পজিশন (top: 50%) এর সাথে মিলিমিটার মিলিয়ে মুরগিকে একদম মাঝ বরাবর সেন্টারিং ট্র্যাকিং লক ভাই ভাই! */
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* গোল ঘরের নিখুঁত এক্সিস চিরে সোজা মাঝখান দিয়ে যাওয়ার জাদুকরী ফর্মুলা */
     transition: left 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.15s ease !important;
     will-change: left, top !important;
 }
+
 
 /* 🚀 [🔒 ওস্তাদ! chicken-red এবং chicken-dead দুটোর সাইজই বড় করা ও থ্রিডি ব্রিডিং লাইভ অ্যানিমেশন ইঞ্জিন লক 🔒] */
 #chicken-img, .chicken-png-node { 
