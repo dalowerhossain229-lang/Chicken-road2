@@ -172,13 +172,38 @@
             playAudio('click');
         }
 
-         // 🚗 [🔒 ওস্তাদ! ৪K পিএনজি গাড়ি অবিরাম ওপর থেকে নিচে নামানোর ওরিজিনাল ট্রাফিক ইঞ্জিন লক 🔒]
+                 // 🚗 [🔒 ওস্তাদ! ছবি আপলোড থাকুক আর না থাকুক—২৪ ঘণ্টা ওপর থেকে নিচে গাড়ি নামানোর ওরিজিনাল ট্রাফিক ইঞ্জিন লক 🔒]
         function startHighVelocityTrafficSpawnerEngine() {
             clearActiveTrafficEngine();
             let lanes = document.querySelectorAll(".road-lane");
             
+            // 🎨 ৪K ক্রিস্টাল ক্লিয়ার হাই-ফিডেলিটি লাল এবং নীল স্পোর্টস কার এসভিজি ভেক্টর কোড
+            const premiumVectorCarsLibrary = [
+                `<div style="width:36px; height:70px; background:linear-gradient(180deg, #e53935 0%, #b71c1c 100%); border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.6), inset 0 0 6px #fff; position:relative; filter:drop-shadow(0 4px 6px rgba(0,0,0,0.5));">
+                    <div style="width:26px; height:22px; background:#2196f3; border-radius:5px; margin:0 auto; position:absolute; top:12px; left:5px; box-shadow:inset 0 0 5px #000; border:1px solid #81d4fa;"></div>
+                    <div style="width:26px; height:12px; background:#2196f3; border-radius:3px; margin:0 auto; position:absolute; top:48px; left:5px; box-shadow:inset 0 0 4px #000; border:1px solid #81d4fa;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; left:-3px; top:14px; border-radius:2px 0 0 2px;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; right:-3px; top:14px; border-radius:0 2px 2px 0;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; left:-3px; top:48px; border-radius:2px 0 0 2px;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; right:-3px; top:48px; border-radius:0 2px 2px 0;"></div>
+                    <div style="width:6px; height:4px; background:#ffee55; position:absolute; left:4px; top:2px; border-radius:50%; box-shadow:0 0 6px #fff;"></div>
+                    <div style="width:6px; height:4px; background:#ffee55; position:absolute; right:4px; top:2px; border-radius:50%; box-shadow:0 0 6px #fff;"></div>
+                </div>`, // 🚗 রেসিং রেড কার
+                `<div style="width:36px; height:70px; background:linear-gradient(180deg, #1e88e5 0%, #0d47a1 100%); border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.6), inset 0 0 6px #fff; position:relative; filter:drop-shadow(0 4px 6px rgba(0,0,0,0.5));">
+                    <div style="width:26px; height:22px; background:#2196f3; border-radius:5px; margin:0 auto; position:absolute; top:12px; left:5px; box-shadow:inset 0 0 5px #000; border:1px solid #81d4fa;"></div>
+                    <div style="width:26px; height:12px; background:#2196f3; border-radius:3px; margin:0 auto; position:absolute; top:48px; left:5px; box-shadow:inset 0 0 4px #000; border:1px solid #81d4fa;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; left:-3px; top:14px; border-radius:2px 0 0 2px;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; right:-3px; top:14px; border-radius:0 2px 2px 0;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; left:-3px; top:48px; border-radius:2px 0 0 2px;"></div>
+                    <div style="width:4px; height:12px; background:#111; position:absolute; right:-3px; top:48px; border-radius:0 2px 2px 0;"></div>
+                    <div style="width:6px; height:4px; background:#ffee55; position:absolute; left:4px; top:2px; border-radius:50%; box-shadow:0 0 6px #fff;"></div>
+                    <div style="width:6px; height:4px; background:#ffee55; position:absolute; right:4px; top:2px; border-radius:50%; box-shadow:0 0 6px #fff;"></div>
+                </div>`  // 🚙 রেসিং ব্লু কার
+            ];
+            
             lanes.forEach((lane, index) => {
-                let spawnSpeed = Math.random() * (1000 - 500) + 500; 
+                // প্রতিটা পাকা রাস্তার জন্য আলাদা আলাদা ডাইনামিক স্পিড ও টাইমিং, যাতে আগে-پیچھے ফাঁকা জায়গা তৈরি করে নামতে পারে!
+                let spawnSpeed = Math.random() * (1100 - 600) + 600; 
                 
                 let intervalIdx = setInterval(() => {
                     if (gameStateStatus === "GAMEOVER") return;
@@ -186,19 +211,21 @@
                     let vehicleNode = document.createElement("div");
                     vehicleNode.className = "dynamic-vehicle-vessel";
                     
-                    let chosenCarImage = pngVehiclesLibrary[Math.floor(Math.random() * pngVehiclesLibrary.length)];
+                    // 🚨 [ইমেজ এরর কিলার ট্র্যাপ]: ডিরেক্ট বিল্ট-ইন ভেক্টর কোড ইনজেক্ট, কোনো এক্সটার্নাল ইমেজ বা পাথের এররই কাজ করবে না ওস্তাদ!
+                    vehicleNode.innerHTML = premiumVectorCarsLibrary[Math.floor(Math.random() * premiumVectorCarsLibrary.length)];
                     
-                    vehicleNode.innerHTML = `<img src="${chosenCarImage}" class="car-png-node" alt="🚘" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:34px; height:65px; background:linear-gradient(180deg, %23ff4444, %23990000); border-radius:8px; box-shadow:0 4px 10px rgba(255,0,0,0.5), inset 0 0 6px %23fff;\'><div style=\'width:26px; height:24px; background:%2381d4fa; margin:8px auto; border-radius:4px;\'/></div>';">`;
+                    // লেনের ঠিক মাঝখানে পজিশন লক এবং স্ক্রিনের এক্কেবারে ওপর থেকে (-130px) ধামাধাম স্পিডে সোজা নিচের দিকে নামার মাস্টার ডিরেকশন!
+                    vehicleNode.style.top = "-130px";
                     
-                    vehicleNode.style.top = "-120px";
-                    
+                    // প্রতিটা রোডের ট্রাফিক স্পিড আলাদা এডজাস্ট করা হলো যাতে প্লেয়ার দেখে দেখে ফাঁকা ট্র্যাক বেছে নিতে পারে
                     let driveDuration = Math.random() * (2.0 - 0.9) + 0.9; 
                     vehicleNode.style.animation = `driveDownAnim ${driveDuration}s linear forwards`;
                     
                     lane.appendChild(vehicleNode);
                     
-                    setTimeout(() => { vehicleNode.remove(); }, 2300); 
-                }, spawnSpeed + (index * 130)); 
+                    // স্ক্রিন পার হয়ে নিচে চলে গেলে গাড়ি মেমোরি থেকে ওটো ডিলিট সাফ
+                    setTimeout(() => { vehicleNode.remove(); }, 2400); 
+                }, spawnSpeed + (index * 140)); // লেনের চেইন গ্যাপ লকিং
                 
                 vehicleSpawnIntervalsList.push(intervalIdx);
             });
@@ -213,6 +240,7 @@
         function resetAllManholeGlows() {
             document.querySelectorAll(".lane-manhole-node").forEach(m => m.className = "lane-manhole-node");
         }
+
 
         async function executeChickenStepJumpSequence() {
             let playBtn = document.getElementById("play-action-btn");
