@@ -383,17 +383,35 @@
             }
         }
 
-
-        
         function updateWin() {
+            // 🎯 ওস্তাদ! ইনপুট প্যানেলের ভেরিয়েবল (currentStake) মেইন বেটিং ভেরিয়েবল (currentBet) এর সাথে ১ মিলিমিটার একুরেট সিঙ্ক লক করা হলো!
+            if (typeof currentBet === 'undefined' || currentBet === 0 || !currentBet) {
+                currentBet = parseFloat(currentStake) || 5000.00;
+            }
+            
             let selectedRisk = document.getElementById("risk-level-select").value;
             let activeLadder = chickenRoadMultiRiskLadders[selectedRisk];
+            
+            // লেনের ওOdds ম্যাপ রিড করা হচ্ছে ভাই ভাই (-১ কারণ sidewalk লেন ০)
             currentMultiplier = activeLadder[currentStep - 1] || 1.00;
             badge.innerText = currentMultiplier + "X";
             
-            let winEstimated = currentBet * currentMultiplier;
-            cashVal.innerText = `৳ ${winEstimated.toFixed(2)}`;
+            // 🎯 ওস্তাদ! কিলার ফিক্স—৳ ০ ট্র্যাপ উপড়ে ফেলে রিয়েল-টাইমে বাজি গুণের আসল কিংস ফর্মুলা!
+            let winEstimated = parseFloat(currentBet) * parseFloat(currentMultiplier);
+            
+            // নিচের ক্যাশআউট গোল্ডেন ডিসপ্লে বাটনে লাইভ টাকা ওতো-লোড ফায়ার ভাই!
+            const cashValNode = document.getElementById("cash-val");
+            if (cashValNode) {
+                cashValNode.innerText = `৳ ${winEstimated.toFixed(2)}`;
+            } else {
+                // বিকল্প বাটন নোড হ্যান্ডেলার সিঙ্ক ভাই ভাই
+                let alternateCashDisplay = document.getElementById("btn-cashout");
+                if (alternateCashDisplay) {
+                    alternateCashDisplay.innerHTML = `CASH OUT <br>৳ ${winEstimated.toFixed(2)}`;
+                }
+            }
 
+            // জ্যাকপট উইন সীমানা চেকিং ভাই ভাই!
             if (currentStep >= activeLadder.length) {
                 isGameOver = true;
                 playAudio('win');
@@ -408,6 +426,8 @@
             }
         }
 
+        
+        
         function triggerCrash(car) {
             isGameOver = true;
             playAudio('crash');
