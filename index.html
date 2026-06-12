@@ -106,7 +106,7 @@
         const cashVal = document.getElementById("cash-val");
         const betValDisplay = document.getElementById("bet-val");
 
-                // 🚀 [🔒 ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ১০০% ডাইনামিক করার মেগা কিংস লক 🔒]
+                 // 🚀 [🔒 ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ১০০% ডাইনামিক করার মেগা কিংস লক 🔒]
         function initWorld() {
             let selectedRisk = document.getElementById("risk-level-select").value;
             let activeLadder = chickenRoadMultiRiskLadders[selectedRisk];
@@ -142,7 +142,11 @@
                 mapContainer.style.overflowX = "auto"; 
                 mapContainer.style.webkitOverflowScrolling = "touch";
             }
+
+            // 🎯 ওস্তাদ! ম্যাপ তৈরি হওয়ার সাথে সাথেই ২৪ ঘণ্টার গলোবাল ট্রাফিক ইঞ্জিন চালু করার কিংস প্লাগইন কল!
+            startGlobalTrafficSpawnerEngine();
         }
+       
         
 
         function handleRiskLevelChange() {
