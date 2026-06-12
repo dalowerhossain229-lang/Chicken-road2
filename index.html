@@ -286,30 +286,30 @@
             moveChicken();
         }
 
-                function moveChicken() {
+                   // 🚀 [🔒 ওস্তাদ! মুরগি ডানে ছোটানো ও ম্যাপ ওটো-স্ক্রোল সোজা করার ১০০% কিংস ডিরেকশন লক 🔒]
+        function moveChicken() {
             currentStep++;
             playAudio('jump');
 
-            // লেনের চওড়া সাইজ ৭০ পিক্সেল সিঙ্ক ভাই!
+            // লেনের চওড়া সাইজ ৭০ পিক্সেল সিঙ্ক ভাই! (বামে ঢোকা বন্ধ করতে মাইনাস ট্রান্সফর্ম সরিয়ে প্লাস পিক্সেল অফসেট লক!)
             let offset = (currentStep * 70);
-            world.style.transform = `translateX(-${offset}px)`;
-            chickenGroup.style.left = offset + "px";
+            
+            // মুরগির শরীর পাকা লেনে কাঁটায় কাঁটায় ডানে সরানোর ওরিজিনাল কিংস পজিশন বর্ম
+            chickenGroup.style.left = (offset + 10) + "px"; 
 
             let selectedRisk = document.getElementById("risk-level-select").value;
-            
-            // 🎯 [🔒 ওস্তাদ! ৪টা আলাদা মোডের জন্য ৪টি কাটকাট কাস্টম ক্র্যাশ প্রোবাবিলিটি বর্ম ১০০% খাঁটি লক 🔒]
-            let crashProbability = 0.20; // 👈 Hard মোডের জন্য কাঁটায় কাঁটায় ২০% ক্র্যাশ রেট ফিক্সড!
-            if (selectedRisk === "Easy") crashProbability = 0.08;      // Easy মোডে ৮% ক্র্যাশ রেট
-            if (selectedRisk === "Medium") crashProbability = 0.13;    // Medium মোডে ১৩% ক্র্যাশ রেট
-            if (selectedRisk === "Hardcore") crashProbability = 0.28;  // Hardcore মোডে ২৮% ক্র্যাশ রেট
+            let crashProbability = 0.20; 
+            if (selectedRisk === "Easy") crashProbability = 0.08;
+            if (selectedRisk === "Medium") crashProbability = 0.13;
+            if (selectedRisk === "Hardcore") crashProbability = 0.28;
 
             let isSafe = Math.random() > crashProbability;
 
-            // 🚀 [🔒 অটো-ক্যামেরা ডাইনামিক ভিউপোর্ট ম্যাপ কন্টেইনার স্ক্রোল লুপ 🔒]
+            // 🚀 [অটো-ক্যামেরা ডাইনামিক ভিউপোর্ট ম্যাপ কন্টেইনার স্ক্রোল লুপ]: মুরগি ডানে আগালে ক্যামেরা তাকে দেখে দেখে মাখনের মতো ডানে স্ক্রল হবে!
             let mapContainer = document.getElementById("viewport");
             if (mapContainer && offset > (mapContainer.clientWidth / 2)) {
                 mapContainer.scrollTo({
-                    left: offset - (mapContainer.clientWidth / 2),
+                    left: offset - (mapContainer.clientWidth / 3),
                     behavior: 'smooth'
                 });
             }
@@ -318,7 +318,7 @@
                 spawnCar(currentStep, isSafe);
             }, 300);
         }
-        
+     
 
 
         // 🚗 [🔒 ওস্তাদ! আপনার পুরনো ফাইলের ওরিজিনাল ২০ মিলি-সেকেন্ড জাভাস্ক্রিপ্ট পিক্সেল লুপ কার মোশন লক 🔒]
