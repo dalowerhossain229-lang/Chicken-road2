@@ -291,73 +291,31 @@
             moveChicken();
         }
 
-                   // 🚀 [🔒 ওস্তাদ! মুরগি ডানে ছোটানো ও ম্যাপ ওটো-স্ক্রোল সোজা করার ১০০% কিংস ডিরেকশন লক 🔒]
-        function moveChicken() {
-            currentStep++;
-            playAudio('jump');
-
-            // লেনের চওড়া সাইজ ৭০ পিক্সেল সিঙ্ক ভাই! (বামে ঢোকা বন্ধ করতে মাইনাস ট্রান্সফর্ম সরিয়ে প্লাস পিক্সেল অফসেট লক!)
-            let offset = (currentStep * 70);
-            
-            // মুরগির শরীর পাকা লেনে কাঁটায় কাঁটায় ডানে সরানোর ওরিজিনাল কিংস পজিশন বর্ম
-            chickenGroup.style.left = (offset + 10) + "px"; 
-
-            let selectedRisk = document.getElementById("risk-level-select").value;
-            let crashProbability = 0.20; 
-            if (selectedRisk === "Easy") crashProbability = 0.08;
-            if (selectedRisk === "Medium") crashProbability = 0.13;
-            if (selectedRisk === "Hardcore") crashProbability = 0.28;
-
-            let isSafe = Math.random() > crashProbability;
-
-            // 🚀 [অটো-ক্যামেরা ডাইনামিক ভিউপোর্ট ম্যাপ কন্টেইনার স্ক্রোল লুপ]: মুরগি ডানে আগালে ক্যামেরা তাকে দেখে দেখে মাখনের মতো ডানে স্ক্রল হবে!
-            let mapContainer = document.getElementById("viewport");
-            if (mapContainer && offset > (mapContainer.clientWidth / 2)) {
-                mapContainer.scrollTo({
-                    left: offset - (mapContainer.clientWidth / 3),
-                    behavior: 'smooth'
-                });
-            }
-
-            setTimeout(() => {
-                spawnCar(currentStep, isSafe);
-            }, 300);
-        }
-     
-        // 🚗 [🔒 ওস্তাদ! গেমে ঢোকার সাথে সাথে ২৪ ঘণ্টা সবগুলো রাস্তায় সবসময় গাড়ি উপর থেকে নিচে নামানোর মেইন কিংস ইঞ্জিন লক 🔒]
+               // 🚗 [🔒 ওস্তাদ! ২৪ ঘণ্টা পাকা রাস্তায় সবসময় গাড়ি উপর থেকে নিচে নামানোর চূড়ান্ত নিখুঁত কিংস ইঞ্জিন লক 🔒]
         function startGlobalTrafficSpawnerEngine() {
             if (window.globalTrafficTimerId) clearInterval(window.globalTrafficTimerId);
             
             // প্রতি ৪৫০ মিলি-সেকেন্ড পর পর ডাইনামিক লুপে আনলিমিটেড গাড়ি ফায়ার হবে, রাস্তায় ট্রাফিক এক সেকেন্ডের জন্যও স্তব্ধ হবে না!
             window.globalTrafficTimerId = setInterval(() => {
-                if (isGameOver) return;
-                
-                const cols = document.querySelectorAll('.road-lane');
+                // গেম ওভার হলেও ব্যাকগ্রাউন্ডে গাড়ি চলাচল স্তব্ধ হবে না, সবসময় অন ফায়ার চলতে থাকবে ওস্তাদ!
+                const cols = document.querySelectorAll('.column');
                 if (!cols || cols.length === 0) return;
                 
-                // ওস্তাদ! ৪টা মোডের যতগুলো লেন থাকবে, সব লেন লুপ করে র‍্যান্ডম রাস্তায় এক সাথে গাড়ি ছিটকে নামানো হবে ভাই ভাই!
                 let randomColIndex = Math.floor(Math.random() * cols.length);
                 let lane = cols[randomColIndex];
-                if (!lane) return;
+                if (!lane || randomColIndex === 0) return; // START জোনে গাড়ি ঢুকবে না ভাই ভাই
 
                 const car = document.createElement("img");
                 const carId = Math.floor(Math.random() * 3) + 1;
                 
-                // গিটহাবের রুট ডিরেক্টরির car1.png, car2.png, car3.png সরাসরি রেন্ডার সিঙ্ক ভাই ভাই!
                 car.src = `car${carId}.png`;
                 car.className = "car car-png-node";
                 lane.appendChild(car);
 
                 let topPos = -120;
-                let speed = Math.floor(Math.random() * (18 - 12) + 12); // গাড়িগুলোর স্পিড র‍্যান্ডম করা হলো যাতে প্লেয়ার দেখে টাইমিং মেলাতে পারে!
+                let speed = Math.floor(Math.random() * (18 - 12) + 12); 
 
                 let interval = setInterval(() => {
-                    if (isGameOver) {
-                        clearInterval(interval);
-                        car.remove();
-                        return;
-                    }
-
                     topPos += speed;
                     car.style.top = topPos + "px";
 
@@ -368,6 +326,64 @@
                 }, 20);
             }, 450);
         }
+
+        // 🐓 [🔒 ওস্তাদ! মুরগি ডানে ছোটানো ও ম্যাপ ওটো-스크োল কাঁটায় কাঁটায় একুরেট করার ১০০% কিংস ডিরেকশন লক 🔒]
+        function moveChicken() {
+            currentStep++;
+            playAudio('jump');
+
+            // লেনের চওড়া সাইজ ৭০ পিক্সেল সিঙ্ক ভাই! (বামে ঢোকা বন্ধ করতে প্লাস পিক্সেল অফসেট কড়া লক!)
+            let offset = (currentStep * 70);
+            chickenGroup.style.left = (offset + 10) + "px"; 
+
+            let selectedRisk = document.getElementById("risk-level-select").value;
+            let crashProbability = 0.20; 
+            if (selectedRisk === "Easy") crashProbability = 0.08;
+            if (selectedRisk === "Medium") crashProbability = 0.13;
+            if (selectedRisk === "Hardcore") crashProbability = 0.28;
+
+            let isSafe = Math.random() > crashProbability;
+
+            // 🚀 [🔒 অটো-ক্যামেরা ডাইনামিক ভিউপোর্ট ম্যাপ কন্টেইনার স্ক্রোল লুপ 🔒]: মুরগি দেখে দেখে হুবху ম্যাপ স্ক্রোল হবে!
+            let mapContainer = document.getElementById("viewport");
+            if (mapContainer && offset > (mapContainer.clientWidth / 2)) {
+                mapContainer.scrollTo({
+                    left: offset - (mapContainer.clientWidth / 3),
+                    behavior: 'smooth'
+                });
+            }
+
+            // 🎯 ওস্তাদ! প্লেয়ার জাম্প করার পর ওই নির্দিষ্ট লেনের সেফ বা ক্র্যাশ টাইমিং লকিং মেকানিজম সিঙ্ক ভাই ভাই!
+            setTimeout(() => {
+                if (!isSafe) {
+                    isGameOver = true;
+                    playAudio('crash');
+                    
+                    let chickenImg = document.getElementById("chicken-img");
+                    if (chickenImg) chickenImg.src = "chicken-dead.png"; 
+                    chickenGroup.className = "animated-chicken-vector chicken-splat-dead";
+                    
+                    if (barrier) barrier.style.display = "block";
+                    btnGo.innerText = "RESET";
+                    btnGo.className = "jili-play-btn btn-go";
+                    btnCash.classList.add("btn-disabled");
+                    btnCash.disabled = true;
+
+                    fetch(`${SERVER_URL}/api/chicken-loss`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ userId: urlUserId, wallet: urlWallet })
+                    }).catch(e => {});
+                } else {
+                    isWaiting = true;
+                    btnGo.disabled = false;
+                    btnGo.classList.remove("btn-disabled");
+                    updateWin(); // 🎯 মাখনের মতো ১ শতভাগ লাইভ টাকা ওতো-লোড ফায়ার হবে ভাই ভাই!
+                }
+            }, 300);
+        }
+
+        
 
         // 🐓 ওস্তাদ! মুরগি লাফ দিলে যাতে ওই লেনে ক্র্যাশ বা সেফ হওয়ার পুরনো ওরিজিনাল টাইমিং লজিক অক্ষত থাকে—তার জন্য এই সুপ্রীম ড্রাইভার লক!
         function spawnCar(step, isSafe) {
