@@ -119,31 +119,33 @@ body {
     border-top: 10px solid #222;
     border-bottom: 10px solid #222;
 }
-
-/* 🛣️ [🔒 ওস্তাদ! আপনার পুরনো সচল ফাইলের অবিকল গেম-ওয়ার্ল্ড হরিজন্টাল ক্যানভাস লক 🔒] */
+/* 🛣️ [🔒 ওস্তাদ! গেম-ওয়ার্ল্ড ক্যানভাস যাতে লেনের সংখ্যা অনুযায়ী ডানে আনলিমিটেড চওড়া হতে পারে তার সুপ্রীম কিংস লক 🔒] */
 #game-world { 
     position: absolute; 
     display: flex; 
     top: 0; 
     left: 0; 
     height: 100%; 
+    width: max-content !important; /* 👈 ওস্তাদ! লেনের সংখ্যা যত বাড়বে, রাস্তা ডানে তত বেশি ডাইনামিকালি ছড়াবে ভাই ভাই! */
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform !important;
 }
 
-/* 🚧 [অন্য গেমের অবিকল সবুজ পাকা রাস্তার লেনের ডিজাইন (Vertical Road Lanes)] */
+/* 🚧 [পাকা রাস্তার লেনের ডিজাইন - প্রতিটা লেনের উইডথ ৭০ পিক্সেল ফিক্সড লকিং যাতে জ্যাম না লাগে] */
 .column, .road-lane { 
-    width: 70px; /* 👈 আপনার পুরনো সচল ফাইলের অবিকল ৭০ পিক্সেল খাঁটি লাক্সারি সাইজ! */
+    width: 70px !important; 
+    min-width: 70px !important; /* 👈 ওস্তাদ! এটি লেনের ৭০ পিক্সেল সাইজ কড়া লক রাখবে, রাস্তা কখনো চিপসে ছোট হবে下 ভাই ভাই! */
     height: 100%; 
     border-right: 1px dashed #1e5631; 
     position: relative; 
-    flex-shrink: 0; 
+    flex-shrink: 0 !important; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
-    background-color: #0b3318; /* 👈 অন্য গেমের আসল লাক্সারি সবুজ পাকা রাস্তা থিম লক! */
+    background-color: #0b3318; 
 }
+
 
 /* 🐓 [১. অন্য গেমের অবিকল শুরুর নিরাপদ জোন sidewalk] */
 .first-col, .starting-safe-sidewalk { 
