@@ -383,7 +383,7 @@
             }
         }
 
-        function updateWin() {
+                function updateWin() {
             // 🎯 ওস্তাদ! ইনপুট প্যানেলের ভেরিয়েবল (currentStake) মেইন বেটিং ভেরিয়েবল (currentBet) এর সাথে ১ মিলিমিটার একুরেট সিঙ্ক লক করা হলো!
             if (typeof currentBet === 'undefined' || currentBet === 0 || !currentBet) {
                 currentBet = parseFloat(currentStake) || 5000.00;
@@ -396,22 +396,21 @@
             currentMultiplier = activeLadder[currentStep - 1] || 1.00;
             badge.innerText = currentMultiplier + "X";
             
-            // 🎯 ওস্তাদ! কিলার ফিক্স—৳ ০ ট্র্যাপ উপড়ে ফেলে রিয়েল-টাইমে বাজি গুণের আসল কিংস ফর্মুলা!
+            // 🎯 ওস্তাদ! কিলার ফিক্স—৳ ০ ট্র্যাপ উপড়ে ফেলে স্ক্রিনশটের আইডি অনুযায়ী রিয়েল-টাইমে বাজি গুণের আসল কিংস ফর্মুলা!
             let winEstimated = parseFloat(currentBet) * parseFloat(currentMultiplier);
             
-            // নিচের ক্যাশআউট গোল্ডেন ডিসপ্লে বাটনে লাইভ টাকা ওতো-লোড ফায়ার ভাই!
-            const cashValNode = document.getElementById("cash-val");
-            if (cashValNode) {
-                cashValNode.innerText = `৳ ${winEstimated.toFixed(2)}`;
-            } else {
-                // বিকল্প বাটন নোড হ্যান্ডেলার সিঙ্ক ভাই ভাই
-                let alternateCashDisplay = document.getElementById("btn-cashout");
-                if (alternateCashDisplay) {
-                    alternateCashDisplay.innerHTML = `CASH OUT <br>৳ ${winEstimated.toFixed(2)}`;
-                }
+            // আপনার স্ক্রিনশটের অবিকল ক্যাশআউট বাটন ও তার ভেতরের ডিসপ্লে ট্যাগ টেক্সট ওয়ান-শটে ওটো-লোড ভাই ভাই!
+            const mainCashBtn = document.getElementById("btn-cashout");
+            const cashValSpan = document.getElementById("cash-val");
+            
+            if (cashValSpan) {
+                cashValSpan.innerText = `৳ ${winEstimated.toFixed(2)}`;
+            } else if (mainCashBtn) {
+                // ওস্তাদ! যদি স্প্যান আইডি মিসিং থাকে, তবে মেইন বাটনের ভেতর সরাসরি ক্যাশআউট টেক্সট পুশ করার অল্টারনেট কিংস প্রোটোকল!
+                mainCashBtn.innerHTML = `CASH OUT <br>৳ ${winEstimated.toFixed(2)}`;
             }
 
-            // জ্যাকপট উইন সীমানা চেকিং ভাই ভাই!
+            // জ্যাকпот উইন সীমানা চেকিং ভাই ভাই!
             if (currentStep >= activeLadder.length) {
                 isGameOver = true;
                 playAudio('win');
