@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Road Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game">
+    <h1>Chicken Road</h1>
+
+    <div id="multiplier">1.00x</div>
+
+    <button id="playBtn">Play</button>
+</div>
+
+<script>
+let multiplier = 1.00;
+
+document.getElementById("playBtn").addEventListener("click", () => {
+    multiplier += (Math.random() * 2).toFixed(2) * 1;
+    document.getElementById("multiplier").innerText =
+        multiplier.toFixed(2) + "x";
+});
+</script>
+
+</body>
+</html>
