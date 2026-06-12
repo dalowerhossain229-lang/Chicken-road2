@@ -226,45 +226,82 @@ body {
     transform: translate(-50%, -50%) scale(1.05) !important; /* নিখুঁত গোল অবস্থান অক্ষত রেখে সামান্য পালস গ্লো ছড়াবে ভাই ভাই */
 }
 
-/* 🐓 [🔒 ওস্তাদ! আপনার পুরনো ফাইলের অবিকল তাজা চিকেন গ্রুপ পজিশনিং বর্ম লকিং 🔒] */
+/* 🐓 [🔒 ওস্তাদ! মুরগির মেইন কন্টেইনার ক্যানভাস রাজকীয় বড় সাইজে ১ মিলিমিটার একুরেট সিঙ্ক লক 🔒] */
 #chicken-group, .animated-chicken-vector { 
-    position: absolute; 
-    width: 70px; 
-    height: 60px; 
-    z-index: 10; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    pointer-events: none; 
+    position: absolute !important; 
+    width: 70px !important; /* লেনের মোট উইডথ ৭০ পিক্সেল পুরোটা জুড়ে বডি কভার লক ভাই ভাই */
+    height: 70px !important; 
+    z-index: 10 !important; 
+    display: flex !important; 
+    justify-content: center !important; 
+    align-items: center !important; 
+    pointer-events: none !important; 
     left: 0px;
-    top: 42%;
-    transform: none;
-    transition: left 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.15s ease;
+    top: 42% !important;
+    transform: none !important;
+    transition: left 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.15s ease !important;
     will-change: left, top !important;
 }
 
-/* 🚀 [চিকেন ৩D ব্রিডিং মোশন নিশ্বাস অ্যানিমেশন লুপ] */
+/* 🚀 [🔒 ওস্তাদ! chicken-red এবং chicken-dead দুটোর সাইজই বড় করা ও থ্রিডি ব্রিডিং লাইভ অ্যানিমেশন ইঞ্জিন লক 🔒] */
 #chicken-img, .chicken-png-node { 
-    width: 45px !important; 
-    height: 45px !important; 
+    width: 60px !important; /* 👈 ওস্তাদ! ৪৫ পিক্সেল থেকে বাড়িয়ে এক্কেবারে মেগা ৬০ পিক্সেল কিলার রাজকীয় বড় সাইজ লক! */
+    height: 60px !important; 
+    max-width: 60px !important;
+    max-height: 60px !important;
     object-fit: contain !important; 
-    z-index: 2; 
-    animation: breathingChicken 1.2s ease-in-out infinite !important; 
-    transform-origin: bottom center;
+    z-index: 2 !important; 
+    display: block !important;
+    /* 🎯 ২-স্তর আল্ট্রা-হাই লাইভ অ্যানিমেশন: শরীর কাঁপিয়ে অনবরত শ্বাস-প্রশ্বাস অ্যাকশন দেখাবে ওস্তাদ! */
+    animation: luxuryBreathingChicken 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate !important; 
+    transform-origin: bottom center !important;
     image-rendering: -webkit-optimize-contrast !important;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5)) !important; /* থ্রিডি পপ-আউট লুক বর্ম */
 }
 
-/* 🎯 মুরগির অবিকল ওরিজিনাল শ্যাডো পালস ড্রাইভার */
+/* 🎯 মুরগির পায়ের নিচের ওরিজিনাল থ্রিডি ওটো-পালস শ্যাডো ড্রাইভার */
 #chicken-shadow { 
-    position: absolute; 
-    bottom: 2px; 
-    width: 30px; 
-    height: 8px; 
-    background: rgba(0,0,0,0.4); 
-    border-radius: 50%; 
-    z-index: 1; 
-    animation: shadowPulse 1.2s ease-in-out infinite;
+    position: absolute !important; 
+    bottom: -2px !important; 
+    width: 45px !important; /* মুরগির বডি বড় হওয়ায় শ্যাডো সাইজও বড় ফিক্সড ভাই ভাই */
+    height: 10px !important; 
+    background: rgba(0,0,0,0.5) !important; 
+    border-radius: 50% !important; 
+    z-index: 1 !important; 
+    animation: luxuryShadowPulse 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate !important;
 }
+
+/* 💀 [🔒 ক্র্যাশ খেয়ে chicken-dead হলে ২-স্তর হাই-ভাইব্রেশন বডি ব্লাস্ট অ্যানিমেশন বর্ম লক 🔒] */
+.chicken-splat-dead #chicken-img, .chicken-splat-dead {
+    animation: chickenDeadBlast 0.15s ease-in-out infinite alternate !important; /* 👈 ডেড বডি অনবরত থরথর করে কাঁপবে ভাই ভাই! */
+    filter: grayscale(0.1) sepia(0.8) hue-rotate(-45deg) saturate(4) drop-shadow(0 0 25px #ff0000) !important;
+}
+
+/* 🎯 [২-স্তর আল্ট্রা-হাই লাইভ ব্রিডিং ফুলানোর কীফ্রেম - মুরগি জীবন্ত নিশ্বাস ফুলিয়ে কাঁপবে ওস্তাদ ভাই ভাই] */
+@keyframes luxuryBreathingChicken {
+    0% { 
+        transform: scale(1) translateY(0) rotate(0deg); 
+    }
+    50% {
+        transform: scale(1.08, 0.92) translateY(1px) rotate(-1deg); /* শরীর একটু চওড়া হয়ে নিচে নামবে ভাই ভাই */
+    }
+    100% { 
+        transform: scale(0.94, 1.08) translateY(-3px) rotate(1deg); /* শরীর লম্বাটে হয়ে ওপরের দিকে শ্বাস টানবে ওস্তাদ! */
+    }
+}
+
+/* 🎯 [শ্যাডো ব্রিডিং পালস কীফ্রেম - মুরগির শরীরের সাথে মিলিমিটার একুরেট মিলবে] */
+@keyframes luxuryShadowPulse {
+    0% { transform: scale(1); opacity: 0.5; filter: blur(1px); }
+    100% { transform: scale(1.25); opacity: 0.2; filter: blur(2px); }
+}
+
+/* 💀 [ডেড মুরগির কিলার কাঁপাকাঁপি জ্যাম কীফ্রেম] */
+@keyframes chickenDeadBlast {
+    0% { transform: scale(1.1) rotate(175deg) translate(1px, -1px); }
+    100% { transform: scale(1.1) rotate(185deg) translate(-1px, 1px); }
+}
+
 
 /* 👑 ওOdds ব্যাজ ফ্লোটার লকিং */
 #float-badge { 
@@ -495,19 +532,7 @@ body {
     box-shadow: 0 1px #2980b9 !important;
 }
 
-/* 🎯 [মুরগির শরীর ফুলানো ও নিশ্বাস নেওয়ার ওরিজিনাল ক্যাসিনো থিম কিফ্রেম] */
-@keyframes breathingChicken {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.06, 0.94); }
-    100% { transform: scale(1); }
-}
 
-/* 🎯 [শ্যাডো ব্রিডিং পালস কীফ্রেম] */
-@keyframes shadowPulse {
-    0% { transform: scale(1); opacity: 0.4; }
-    50% { transform: scale(1.15); opacity: 0.6; }
-    100% { transform: scale(1); opacity: 0.4; }
-}
 
 /* 🌀 [ঘূর্ণন এнимиেশন লুপ] */
 .btn-disabled { 
