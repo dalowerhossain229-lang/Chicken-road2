@@ -43,15 +43,15 @@
     <!-- 🎛️ কন্ট্রোল প্যানেল এরিয়া (হুবহু পুরনো ফাইলের বেটিং ড্যাশবোর্ড ক্লোন) -->
     <div id="controls" class="bottom-bet-dashboard">
         
-        <!-- রিস্ক লেভেল ফিল্টার সিলেক্টর (Easy, Medium, Hard, Hardcore ৪-স্তর চার্ট) -->
+       <!-- রিস্ক লেভেল ফিল্টার সিলেক্টর ( বাড়তি টেক্সট ছাড়া কাঁটায় কাঁটায় ৪-শব্দের ওরিজিনাল কিংস লেবেল ) -->
         <div class="diff-row risk-dropdown-holder" style="width: 100%; margin-bottom: 2px;">
             <select id="risk-level-select" onchange="handleRiskLevelChange()" style="width: 100%; background: #1b1b1b; border: 1px solid #222; border-radius: 6px; padding: 8px; color: #aaa; font-size: 12px; font-weight: bold; outline: none; appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=%27%23aaa%27 height=%2724%27 viewBox=%270 0 24 24%27 width=%2724%27 xmlns=%27http://w3.org><path d=%27M7 10l5 5 5-5z%27/><path d=%27M0 0h24v24H0z%27 fill=%27none%27/></svg>'); background-repeat: no-repeat; background-position: right 10px center;">
-                <option value="Easy">Easy (30 Lanes)</option>
-                <option value="Medium">Medium (25 Lanes)</option>
-                <option value="Hard" selected>Hard (20 Lanes)</option>
-                <option value="Hardcore">Hardcore (15 Lanes)</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard" selected>Hard</option>
+                <option value="Hardcore">Hardcore</option>
             </select>
-        </div>
+        </div> 
 
         <div class="input-group stake-input-container">
             <button class="ctrl-btn adjust-btn" onclick="updateBet('minus')">-</button>
