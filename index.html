@@ -106,7 +106,7 @@
         const cashVal = document.getElementById("cash-val");
         const betValDisplay = document.getElementById("bet-val");
 
-                // 🚀 [ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ডাইনামিক করার ও শেষ মাথা পর্যন্ত স্ক্রোল সচল করার কিংস ফর্মুলা]
+        // 🚀 [🔒 ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ১০০% ডাইনামিক করার মেগা কিংস লক 🔒]
         function initWorld() {
             let selectedRisk = document.getElementById("risk-level-select").value;
             let activeLadder = chickenRoadMultiRiskLadders[selectedRisk];
@@ -121,15 +121,15 @@
                 wrapper.appendChild(laneNode);
             });
 
-            // 🎯 ওস্তাদ! ৪টা মোড অনুযায়ী মেইন ওয়ার্ল্ডের টোটাল উইডথ লেনের সাইজ (৭০ পিক্সেল) আর নিরাপদ জোন হিসাব করে ডাইনামিক লক করা হলো ভাই ভাই!
-            let totalLanesWidth = (activeLadder.length * 70) + 220; // লেনের সংখ্যা + START ও GOAL জোনের উইডথ সিঙ্ক
+            // 🎯 ওস্তাদ! লেনের সংখ্যা (Easy: ৩০, Medium: ২৫, Hard: ২০, Hardcore: ১৫) অনুযায়ী মেইন গেম-ওয়ার্ল্ডের টোটাল উইডথ ডাইনামিক ফিক্সড!
+            let totalLanesWidth = (activeLadder.length * 70) + 220; // লেনের সংখ্যা × ৭০ পিক্সেল + START ও GOAL জোনের সাইজ সিঙ্ক
             const worldNode = document.getElementById("game-world");
             if (worldNode) {
                 worldNode.style.width = totalLanesWidth + "px"; 
-                worldNode.style.transform = `translateX(0px)`; // মোড চেঞ্জ করলে ক্যামেরা আবার শুরুতে ব্যাক করবে ভাই
+                worldNode.style.transform = `translateX(0px)`; // মোড চেঞ্জ করলে ক্যামেরা আবার শুরুতে চলে আসবে ভাই ভাই
             }
 
-            // হাইওয়ে এরিনা ভিউপোর্টে হাত দিয়ে ডান থেকে বামে স্ক্রল করার ডম মেমোরি ১০০% সচল ফিক্সড
+            // হাইওয়ে এরিনা ভিউপোর্টে হাত দিয়ে ডান থেকে বামে স্ক্রল করার ডম মেমোরি আনলক
             let mapContainer = document.getElementById("viewport");
             if (mapContainer) {
                 mapContainer.scrollLeft = 0; 
@@ -137,6 +137,7 @@
                 mapContainer.style.webkitOverflowScrolling = "touch";
             }
         }
+
 
         function handleRiskLevelChange() {
             playAudio('click');
