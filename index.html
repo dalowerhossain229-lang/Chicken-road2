@@ -106,7 +106,7 @@
         const cashVal = document.getElementById("cash-val");
         const betValDisplay = document.getElementById("bet-val");
 
-                 // 🚀 [🔒 ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ১০০% ডাইনামিক করার মেগা কিংস লক 🔒]
+                // 🚀 [🔒 ওস্তাদ! ৪টা মোডের লেনের সংখ্যা ও ক্লাস মিসলাইনমেন্ট জ্যাম ১০০% স্থায়ী ফিক্স বর্ম 🔒]
         function initWorld() {
             let selectedRisk = document.getElementById("risk-level-select").value;
             let activeLadder = chickenRoadMultiRiskLadders[selectedRisk];
@@ -120,22 +120,23 @@
                 
                 activeLadder.forEach((odds, index) => {
                     let laneNode = document.createElement("div");
-                    laneNode.className = "road-lane column";
+                    // 🚨 [ওস্তাদ! পুরনো ওরিজিনাল কার ইঞ্জিনের সাথে মিলিয়ে শুধুমাত্র '.column' ক্লাস প্রাইমারি লক করা হলো যাতে জাভাস্ক্রিপ্ট জ্যাম না খায় ভাই!]
+                    laneNode.className = "column road-lane";
                     laneNode.setAttribute("data-lane", index);
-                    laneNode.innerHTML = `<div class="lane-manhole-node manhole" id="odds-${index}">${odds}</div>`;
+                    laneNode.innerHTML = `<div class="manhole lane-manhole-node" id="odds-${index}">${odds}</div>`;
                     wrapper.appendChild(laneNode);
                 });
             }
 
-            // 🎯 ওস্তাদ! ৪টা মোডের সাইজ লেনের ৭০ পিক্সেল উইডথ আর নিরাপদ জোনের সাইজ মিলিয়ে ডাইনামিক ক্যানভাস লক!
-            let totalLanesWidth = (activeLadder.length * 70) + 220; 
+            // 🎯 ৪টা মোড অনুযায়ী মেইন ক্যানভাসের টোটাল উইডথ ৭০ পিক্সেল লকিং সিঙ্ক
+            let totalLanesWidth = (activeLadder.length * 70) + 140; 
             const worldNode = document.getElementById("game-world");
             if (worldNode) {
                 worldNode.style.width = totalLanesWidth + "px"; 
-                worldNode.style.transform = `translateX(0px)`; // মোড চেঞ্জ করলে ক্যামেরা শুরুতে ব্যাক করবে ভাই ভাই
+                worldNode.style.transform = `translateX(0px)`; 
             }
 
-            // হাইওয়ে এরিনা ভিউপোর্টে হাত দিয়ে ডান থেকে বামে স্ক্রল করার ওটো-রিলিজ লক ফিক্সড!
+            // হাইওয়ে এরিনা ভিউপোর্টে হাত দিয়ে ডান থেকে বামে স্ক্রল করার ওটো-রিলিজ লক সচল
             let mapContainer = document.getElementById("viewport");
             if (mapContainer) {
                 mapContainer.scrollLeft = 0; 
@@ -143,10 +144,10 @@
                 mapContainer.style.webkitOverflowScrolling = "touch";
             }
 
-            // 🎯 ওস্তাদ! ম্যাপ তৈরি হওয়ার সাথে সাথেই ২৪ ঘণ্টার গলোবাল ট্রাফিক ইঞ্জিন চালু করার কিংস প্লাগইন কল!
+            // ওস্তাদ! ম্যাপ লোড কমপ্লিট হওয়ার সাথে সাথেই ব্যাকগ্রাউন্ডে ২৪ ঘণ্টার গ্লোবাল ট্রাফিক স্পোনারকে ফায়ার করা হলো!
             startGlobalTrafficSpawnerEngine();
         }
-       
+         
         
 
         function handleRiskLevelChange() {
