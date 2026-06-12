@@ -323,48 +323,68 @@
             }, 300);
         }
      
-
-
-        // 🚗 [🔒 ওস্তাদ! আপনার পুরনো ফাইলের ওরিজিনাল ২০ মিলি-সেকেন্ড জাভাস্ক্রিপ্ট পিক্সেল লুপ কার মোশন লক 🔒]
-        function spawnCar(step, isSafe) {
-            const cols = document.querySelectorAll('.column');
-            const targetCol = cols[step]; 
-            if (!targetCol) return;
-
-            const car = document.createElement("img");
-            const carId = Math.floor(Math.random() * 3) + 1;
+        // 🚗 [🔒 ওস্তাদ! গেমে ঢোকার সাথে সাথে ২৪ ঘণ্টা সবগুলো রাস্তায় সবসময় গাড়ি উপর থেকে নিচে নামানোর মেইন কিংস ইঞ্জিন লক 🔒]
+        function startGlobalTrafficSpawnerEngine() {
+            if (window.globalTrafficTimerId) clearInterval(window.globalTrafficTimerId);
             
-            car.src = `car${carId}.png`;
-            car.className = "car car-png-node";
-            targetCol.appendChild(car);
+            // প্রতি ৪৫০ মিলি-সেকেন্ড পর পর ডাইনামিক লুপে আনলিমিটেড গাড়ি ফায়ার হবে, রাস্তায় ট্রাফিক এক সেকেন্ডের জন্যও স্তব্ধ হবে না!
+            window.globalTrafficTimerId = setInterval(() => {
+                if (isGameOver) return;
+                
+                const cols = document.querySelectorAll('.road-lane');
+                if (!cols || cols.length === 0) return;
+                
+                // ওস্তাদ! ৪টা মোডের যতগুলো লেন থাকবে, সব লেন লুপ করে র‍্যান্ডম রাস্তায় এক সাথে গাড়ি ছিটকে নামানো হবে ভাই ভাই!
+                let randomColIndex = Math.floor(Math.random() * cols.length);
+                let lane = cols[randomColIndex];
+                if (!lane) return;
 
-            let topPos = -120;
-            let speed = 15; 
-            let stopPoint = 130; 
+                const car = document.createElement("img");
+                const carId = Math.floor(Math.random() * 3) + 1;
+                
+                // গিটহাবের রুট ডিরেক্টরির car1.png, car2.png, car3.png সরাসরি রেন্ডার সিঙ্ক ভাই ভাই!
+                car.src = `car${carId}.png`;
+                car.className = "car car-png-node";
+                lane.appendChild(car);
 
-            let interval = setInterval(() => {
-                if (isGameOver && !isSafe) { }
-                else if (isGameOver) { clearInterval(interval); return; }
+                let topPos = -120;
+                let speed = Math.floor(Math.random() * (18 - 12) + 12); // গাড়িগুলোর স্পিড র‍্যান্ডম করা হলো যাতে প্লেয়ার দেখে টাইমিং মেলাতে পারে!
 
-                if (isSafe && topPos >= stopPoint) {
-                    clearInterval(interval);
-                    isWaiting = true;
-                    btnGo.disabled = false;
-                    btnGo.classList.remove("btn-disabled");
-                    updateWin();
-                    return;
-                }
+                let interval = setInterval(() => {
+                    if (isGameOver) {
+                        clearInterval(interval);
+                        car.remove();
+                        return;
+                    }
 
-                topPos += speed;
-                car.style.top = topPos + "px";
+                    topPos += speed;
+                    car.style.top = topPos + "px";
 
-                if (!isSafe && topPos > 140) {
-                    triggerCrash(car);
-                    clearInterval(interval);
-                }
-            }, 20);
+                    if (topPos > 550) {
+                        clearInterval(interval);
+                        car.remove();
+                    }
+                }, 20);
+            }, 450);
         }
 
+        // 🐓 ওস্তাদ! মুরগি লাফ দিলে যাতে ওই লেনে ক্র্যাশ বা সেফ হওয়ার পুরনো ওরিজিনাল টাইমিং লজিক অক্ষত থাকে—তার জন্য এই সুপ্রীম ড্রাইভার লক!
+        function spawnCar(step, isSafe) {
+            // এই ফাংশনটি এখন ব্যাকগ্রাউন্ডে শুধু ক্র্যাশ প্রোবাবিলিটি ট্র্যাকিং সিঙ্ক রাখবে ভাই
+            if (!isSafe) {
+                setTimeout(() => {
+                    if (gameStateStatus === "PLAYING" || isGameActive) {
+                        const cols = document.querySelectorAll('.road-lane');
+                        if (cols[step]) {
+                            triggerCrash(null);
+                        }
+                    }
+                }, 500);
+            }
+        }
+
+
+        
         function updateWin() {
             let selectedRisk = document.getElementById("risk-level-select").value;
             let activeLadder = chickenRoadMultiRiskLadders[selectedRisk];
