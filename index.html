@@ -106,6 +106,7 @@
         const cashVal = document.getElementById("cash-val");
         const betValDisplay = document.getElementById("bet-val");
 
+                // 🚀 [ওস্তাদ! ৪টা মোডের লেনের সংখ্যা অনুযায়ী রাস্তা ডাইনামিক করার ও শেষ মাথা পর্যন্ত স্ক্রোল সচল করার কিংস ফর্মুলা]
         function initWorld() {
             let selectedRisk = document.getElementById("risk-level-select").value;
             let activeLadder = chickenRoadMultiRiskLadders[selectedRisk];
@@ -119,12 +120,29 @@
                 laneNode.innerHTML = `<div class="lane-manhole-node manhole" id="odds-${index}">${odds}</div>`;
                 wrapper.appendChild(laneNode);
             });
+
+            // 🎯 ওস্তাদ! ৪টা মোড অনুযায়ী মেইন ওয়ার্ল্ডের টোটাল উইডথ লেনের সাইজ (৭০ পিক্সেল) আর নিরাপদ জোন হিসাব করে ডাইনামিক লক করা হলো ভাই ভাই!
+            let totalLanesWidth = (activeLadder.length * 70) + 220; // লেনের সংখ্যা + START ও GOAL জোনের উইডথ সিঙ্ক
+            const worldNode = document.getElementById("game-world");
+            if (worldNode) {
+                worldNode.style.width = totalLanesWidth + "px"; 
+                worldNode.style.transform = `translateX(0px)`; // মোড চেঞ্জ করলে ক্যামেরা আবার শুরুতে ব্যাক করবে ভাই
+            }
+
+            // হাইওয়ে এরিনা ভিউপোর্টে হাত দিয়ে ডান থেকে বামে স্ক্রল করার ডম মেমোরি ১০০% সচল ফিক্সড
+            let mapContainer = document.getElementById("viewport");
+            if (mapContainer) {
+                mapContainer.scrollLeft = 0; 
+                mapContainer.style.overflowX = "auto"; 
+                mapContainer.style.webkitOverflowScrolling = "touch";
+            }
         }
 
         function handleRiskLevelChange() {
             playAudio('click');
             initWorld();
         }
+
 
         // 🔌 [উইঙ্গো কালার ট্রেড ওরিজিনাল রিয়েল-টাইম সকেট ব্যালেন্স সিঙ্ক গেটওয়ে]
         if (typeof io !== 'undefined') {
