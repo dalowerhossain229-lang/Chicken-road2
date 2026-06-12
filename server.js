@@ -19,10 +19,10 @@ const io = socketIo(server, {
     }
 });
 
-// 📁 মিডলওয়্যার এবং স্ট্যাটিক ফাইল পাথ কনফিগারেশন
+// 📁 মিডলওয়্যার এবং রুট কারেন্ট ডিরেক্টরি ফাইল পাথ কনফিগারেশন
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname)));
 
 // 🔐 সিকিউরিটি হেডার এবং গ্লোবাল CORS সিঙ্ক ড্রাইভার
 app.use((req, res, next) => {
@@ -31,6 +31,12 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     next();
 });
+
+// 🏠 মেইন রুট রিকোয়েস্টে সরাসরি index.html ফাইল সার্ভ করার ফিক্স
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 
 // 🎰 ইন-মেমোরি ডাটাবেজ (লাইভ ব্যালেন্স সিঙ্ক)
 let usersDatabase = {
