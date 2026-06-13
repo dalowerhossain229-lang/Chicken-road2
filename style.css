@@ -153,28 +153,27 @@ body {
     box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.15), inset 5px 0 15px rgba(0, 0, 0, 0.15) !important; /* ৩D রাস্তার রিয়েল ক্যাসিনো ফিল ভাই ভাই */
 }
 
-
-/* 🐓 [১. অন্য গেমের অবিকল শুরুর নিরাপদ জোন sidewalk] */
+/* 🐓 [🔒 ওস্তাদ! মুরগী শুরুতে যে কলামে অবস্থান নিয়েছে ঐ কলাম ১০০% ধবধবে সাদা কালার করার কিংস বর্ম লক 🔒] */
 .first-col, .starting-safe-sidewalk { 
-    background-color: #202020; 
-    border-right: 1px solid #333; 
-    box-shadow: 5px 0 15px rgba(0,0,0,0.5); 
-    z-index: 10; 
+    background-color: #ffffff !important; /* 👈 ওস্তাদ! এক্কেবারে জেনুইন খাঁটি ১০০০০০০% ধবধবে সাদা (White) কালার লক! */
+    border-right: 2px solid #222222 !important; /* পিংক রাস্তার সাথে আলাদা করতে কড়া বর্ডার সিঙ্ক */
+    box-shadow: 8px 0 20px rgba(0,0,0,0.4) !important; 
+    position: relative;
+    z-index: 10 !important; 
+    flex-shrink: 0 !important;
+    min-width: 70px !important;
+    width: 70px !important;
 }
 
-.safe-zone-lbl, .win-zone-lbl {
-    font-size: 13px;
-    font-weight: 950;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    writing-mode: vertical-rl; 
-    text-shadow: 1px 1px 2px #000;
-    opacity: 0.7;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+/* সাদা ব্যাকগ্রাউন্ডের ওপর 'START' টেক্সট যাতে জলজল করে ফুটে ওঠে তার কালার ফিক্স */
+.safe-zone-lbl {
+    color: #111111 !important; /* 👈 ওস্তাদ! সাদার ওপর কালো টেক্সট লেবেল কড়া ফুটে উঠবে ভাই ভাই! */
+    font-size: 14px !important;
+    font-weight: 950 !important;
+    text-shadow: none !important;
+    opacity: 0.8 !important;
 }
+
 
 /* 🏁 ডানের চূড়ান্ত উইনিং ফুটপাত জোন */
 .ending-win-sidewalk {
