@@ -137,19 +137,20 @@ body {
     will-change: transform !important;
 }
 
-/* 🚧 [পাকা রাস্তার লেনের ডিজাইন - প্রতিটা লেনের উইডথ ৭০ পিক্সেল ফিক্সড লকিং যাতে জ্যাম না লাগে] */
+/* 🚧 [🔒 ওস্তাদ! পাকা রাস্তার লেনগুলোকে এক ঝটকায় ইন্টারন্যাশনাল ডিপ পিংক ক্যাসিনো থিমে ১০০% লক 🔒] */
 .column, .road-lane { 
     width: 70px !important; 
-    min-width: 70px !important; /* 👈 ওস্তাদ! এটি লেনের ৭০ পিক্সেল সাইজ কড়া লক রাখবে, রাস্তা কখনো চিপসে ছোট হবে না ভাই ভাই! */
+    min-width: 70px !important; /* লেনের ৭০ পিক্সেল সাইজ কড়া লক থাকবে ভাই ভাই */
     height: 100%; 
-    border-right: 1px dashed #1e5631; 
+    border-right: 1px dashed rgba(255, 255, 255, 0.25) !important; /* 👈 ওস্তাদ! ডিপ পিংকের ওপর সাদা ড্যাশড বর্ডার লাইন চমৎকার ফুটবে! */
     position: relative; 
-    flex-shrink: 0 !important; /* জ্যাম খেয়ে সঙ্কুচিত হওয়া ১০০% বন্ধ ভাই! */
+    flex-shrink: 0 !important; 
     display: flex !important; 
     flex-direction: column !important; 
     align-items: center !important; 
     justify-content: center !important; 
-    background-color: #0b3318; 
+    background-color: #ff1493 !important; /* 👈 ওস্তাদ! এক্কেবারে জেনুইন কিংস অফিশিয়াল ১০০০০০০% খাঁটি ডিপ পিংক (Deep Pink) কালার লক! */
+    box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.15), inset 5px 0 15px rgba(0, 0, 0, 0.15) !important; /* ৩D রাস্তার রিয়েল ক্যাসিনো ফিল ভাই ভাই */
 }
 
 
